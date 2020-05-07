@@ -21,4 +21,5 @@ public:
     float getY();
     string toString();
     Point(float x, float y);
+    Point();
 };

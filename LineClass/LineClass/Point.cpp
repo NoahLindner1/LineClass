@@ -42,3 +42,7 @@ float Point::getY()
 {
     return y;
 }
+
+Point::Point(){
+    
+}

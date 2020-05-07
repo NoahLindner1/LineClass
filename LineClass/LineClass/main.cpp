@@ -1,10 +1,4 @@
-//
-//  main.cpp
-//  LineClass
-//
-//  Created by Noah Lindner on 4/28/20.
-//  Copyright © 2020 Noah Lindner. All rights reserved.
-//
+
 
 #define CATCH_CONFIG_MAIN
 #include <iostream>
@@ -20,7 +14,7 @@ TEST_CASE("To string")
     SECTION("Testing Constructor"){
         try
         {
-            Point test1 = Point(-1, 2);
+            Point(-1, 2);
             FAIL();
         }
         catch (...)
@@ -30,7 +24,7 @@ TEST_CASE("To string")
 
         try
         {
-            Point test1 = Point(1, -2);
+            Point(1, -2);
             FAIL();
         }
         catch (...)
@@ -63,8 +57,10 @@ TEST_CASE("To string")
 
 	SECTION("Making a Line") {
         try{
-            Line testL(Point(1.0,2.0),Point(1.0,2.0));
+            Point p1(5.0,3.0);
+            Line testL(p1,p1);
             FAIL();
+            //we want this to fail...
         }
         catch(...){
             SUCCEED();
@@ -91,30 +87,21 @@ TEST_CASE("To string")
         Line testL2(Point(2.0,2.0),Point(4.0,4.0));
         REQUIRE(testL1.isParallel(testL2));
         
-        Line testL3(Point(5.0,1.0),Point(6.0,2.0));
-        Line testL4(Point(1.0,2.0),Point(4.0,4.0));
-        REQUIRE(!testL3.isParallel(testL2));
+        Line testL3(Point(1.0,1.0),Point(5.0,5.0));
+        Line testL4(Point(1.0,4.0),Point(4.0,1.0));
+        REQUIRE(!testL3.isParallel(testL4));
     }
     
+
     SECTION("Testing doesCross"){
-        Line testL1(Point(4.0,1.0),Point(5.0,2.0));
-        Line testL2(Point(1.0,2.0),Point(2.0,4.0));
+        Line testL1(Point(1.0,1.0),Point(5.0,5.0));
+        Line testL2(Point(1.0,5.0),Point(5.0,1.0));
         REQUIRE(testL1.doesCross(testL2));
         
         Line testL3(Point(1.0,1.0),Point(2.0,2.0));
         Line testL4(Point(2.0,2.0),Point(4.0,4.0));
-        REQUIRE(!testL1.doesCross(testL2));
+        REQUIRE(!testL3.doesCross(testL4));
 
     }
 
 }
-
-
-
-//#include <iostream>
-//using namespace std;
-//
-//int main()
-//{
-//    cout << 1 << endl;
-//}
